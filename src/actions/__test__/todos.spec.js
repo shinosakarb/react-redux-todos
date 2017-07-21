@@ -35,7 +35,7 @@ describe('todos actions', () => {
     })
 
     it('is calling action creators', () => {
-      const store = mockStore({ todos: [] })
+      const store = mockStore([])
 
       const expectedActions = [
         { type: types.FETCH_TODOS_SUCCESS, todos }
