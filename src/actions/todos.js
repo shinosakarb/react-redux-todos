@@ -1,9 +1,9 @@
-import * as types from '../constants/ActionTypes'
+import { FETCH_TODOS_SUCCESS } from '../constants/ActionTypes'
 import * as api from '../api'
 
 export const fetchTodosSuccess = (todos) => {
   return {
-    type: types.FETCH_TODOS_SUCCESS,
+    type: FETCH_TODOS_SUCCESS,
     todos
   }
 }
