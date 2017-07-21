@@ -6,6 +6,6 @@ export const fetchTodos = () => {
 }
 
 export const addTodo = (todo) => {
-  return client.post('/todos', { todo })
+  return client.post('/todos', { todo: { title: todo } })
     .then(res => res.data)
 }

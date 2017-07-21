@@ -29,7 +29,7 @@ describe('api', () => {
       const todo = { title: 'todo1' }
       const newTodo = { ...todo, id: 1 }
       mock.onPost('/todos').reply(201, newTodo)
-      return api.addTodo(todo).then(json => {
+      return api.addTodo('todo1').then(json => {
         expect(json).toEqual(newTodo)
       })
     })
