@@ -27,6 +27,18 @@ describe('todos actions', () => {
         todos
       })
     })
+
+    it('created ADD_TODO_SUCCESS', () => {
+      const todo = {
+        id: 1,
+        title: 'todo1'
+      }
+
+      expect(actions.addTodoSuccess(todo)).toEqual({
+        type: types.ADD_TODO_SUCCESS,
+        todo
+      })
+    })
   })
 
   describe('fetchTodo', () => {
@@ -42,6 +54,29 @@ describe('todos actions', () => {
       ]
 
       return store.dispatch(actions.fetchTodos()).then(() => {
+        expect(store.getActions()).toEqual(expectedActions)
+      })
+    })
+  })
+
+  describe('addTodo', () => {
+    const todo = {
+      id: 1,
+      title: 'todo1'
+    }
+
+    beforeAll(() => {
+      mock.onPost('/todos').reply(201, todo)
+    })
+
+    it('is calling action creators', () => {
+      const store = mockStore([])
+
+      const expectedActions = [
+        { type: types.ADD_TODO_SUCCESS, todo }
+      ]
+
+      return store.dispatch(actions.addTodo()).then(() => {
         expect(store.getActions()).toEqual(expectedActions)
       })
     })
