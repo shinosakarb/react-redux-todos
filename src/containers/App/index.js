@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import TodoList from '../../components/TodoList'
+import TodoInputText from '../../components/TodoInputText'
 import * as actions from '../../actions/todos'
 
 class App extends Component {
@@ -10,10 +11,13 @@ class App extends Component {
   }
 
   render() {
-    const { todos } = this.props
+    const { todos, actions } = this.props
 
     return (
-      <TodoList todos={todos} />
+      <div>
+        <TodoInputText onSave={actions.addTodo} />
+        <TodoList todos={todos} />
+      </div>
     )
   }
 }

@@ -6,7 +6,9 @@ import MockAdapter from 'axios-mock-adapter'
 import { mount } from 'enzyme'
 import App from '../App'
 import TodoList from '../../components/TodoList'
+import TodoInputText from '../../components/TodoInputText'
 import client from '../../api/client'
+import * as actions from '../../actions/todos'
 
 describe('App', () => {
   const middlewares = [thunk]
@@ -36,6 +38,8 @@ describe('App', () => {
     )
 
     expect(wrapper.find(App)).toHaveLength(1)
+    expect(wrapper.find(TodoInputText)).toHaveLength(1)
+    expect(wrapper.find(TodoList)).toHaveLength(1)
     expect(wrapper.find(TodoList).props()).toEqual({ todos })
   })
 })
